@@ -34,6 +34,12 @@ namespace Chopwella.Infrastructure
         public static CheckIn check4 = new CheckIn { Staff = staff5, IsChecked = true, Vendor = vendor2 };
         public static CheckIn check5 = new CheckIn { Staff = staff8, IsChecked = true, Vendor = vendor2 };
 
+        /*Dummy Data for Roles*/
+
+        public static Role Admin = new Role { Name = "Vendor", Id = 1 };
+
+        public static Role FoodVendor = new Role { Name = "Vendor", Id = 2 };
+
 
         public static IEnumerable<Category> GetCategories() => new List<Category> { category1, category2, category3, category4, category5 };
 
@@ -42,5 +48,7 @@ namespace Chopwella.Infrastructure
         public static IEnumerable<Staff> GetStaff() => new List<Staff> { staff1, staff2, staff3, staff4, staff5, staff6, staff7, staff8, staff9, staff10 };
         public static IEnumerable<Visitor> GetVisitors() => new List<Visitor> { visitor1, visitor2 };
         public static IEnumerable<CheckIn> GetCheckIns() => new List<CheckIn> { check1, check2, check3, check4, check5 };
+
+        public IEnumerable<Role> GetRoles = new List<Role> { FoodVendor, Admin };
     }
 }
