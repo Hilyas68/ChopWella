@@ -35,7 +35,7 @@
                 </li>
             </ul>
 
-           
+
 
             <!-- Right navbar links -->
 
@@ -240,13 +240,13 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-  
+
     <!-- Bootstrap 4 -->
     <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- DataTables -->
     <script src="~/Content/plugins/datatables/jquery.dataTables.js"></script>
     <script src="~/Content/plugins/datatables/dataTables.bootstrap4.js"></script>
-   
+
     <!-- AdminLTE App -->
     <script src="~/Content/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -266,6 +266,7 @@
         });
     </script>
 
+    @RenderSection("scripts", false)
 
 </body>
 </html>

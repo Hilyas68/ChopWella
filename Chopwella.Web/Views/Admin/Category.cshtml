@@ -40,53 +40,9 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Category Name</th>
-                                    
+
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        Cyberacademy
-                                    </td>
-                                   
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        Senior Staffs
-                                    </td>
-                                  
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        Junior Staffs
-                                    </td>
-                                   
-                                </tr>
-
-                                <tr>
-                                    <td>4</td>
-                                    <td>
-                                       Contract Staffs
-                                    </td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td>5</td>
-                                    <td>
-                                        IT/NYSC
-                                    </td>
-                                   
-                                </tr>
-
-
-                            </tbody>
-
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -99,5 +55,42 @@
     </section>
     <!-- /.content -->
 </div>
+@section scripts{
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            var dataTable = $('#example1').DataTable({
+                //configuration settings for the table
+                "ajax": {
+                    "url": "http://localhost:60532/api/chopwella/category",
+                    "type": "GET",
+                    "dataType": "json",
+                    "dataSrc": "" //render as array not json
+                },
+                "columns":
+                    [
+                        { "data": "Id" },
+                        { "data": "Name" },
+                    ],
+                "bDestroy": true,
+
+                "language": {
+                    "emptyTable": "Table is empty"
+                }
+            });
+
+
+
+
+        });
+
+
+    </script>
+
+
+}
 
 

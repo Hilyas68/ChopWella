@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Chopwella.Core.Staff>
 @{
     ViewBag.Title = "Staff";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -42,63 +42,11 @@
                                     <th>Staff Name</th>
                                     <th>Staff Number</th>
                                     <th>Email</th>
-                                    <th>category</th>
+                                    <th>Category</th>
+                                    
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-                                <tr>
-                                    <td>4</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-                                <tr>
-                                    <td>5</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-
-                            </tbody>
-
+                            
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -111,3 +59,46 @@
     </section>
     <!-- /.content -->
 </div>
+
+@section scripts{
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            var dataTable = $('#example1').DataTable({
+                //configuration settings for the table
+                "ajax": {
+                    "url": "http://localhost:60532/api/chopwella/staff",
+                    "type": "GET",
+                    "dataType": "json",
+                    "dataSrc": "" //render as array not json
+                },
+                "columns":
+                    [
+                        { "data": "Id" },
+                        { "data": "Name" },
+                        { "data": "StaffNum" },
+                        { "data": "Email" },
+                        { "data": "Category.Name" },
+                        
+
+                    ],
+                "bDestroy": true,
+
+                "language": {
+                    "emptyTable": "Table is empty"
+                }
+            });
+
+
+
+
+        });
+
+
+    </script>
+
+
+}
