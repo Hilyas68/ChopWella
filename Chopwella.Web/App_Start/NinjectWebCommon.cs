@@ -66,6 +66,7 @@ namespace Chopwella.Web.App_Start
             {
                 new RepositoryModule(),
                 new ServiceModule(),
+                new UserModule()
             };
 
             kernel.Load(modules);

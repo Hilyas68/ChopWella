@@ -7,13 +7,13 @@ namespace Chopwella.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addEmailAddressNotationToStaff : IMigrationMetadata
+    public sealed partial class Auth : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addEmailAddressNotationToStaff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Auth));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806280912254_addEmailAddressNotationToStaff"; }
+            get { return "201807051121414_Auth"; }
         }
         
         string IMigrationMetadata.Source

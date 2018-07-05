@@ -4,7 +4,7 @@ namespace Chopwella.Core
 {
     public class Staff : BaseEntity
     {
-        [Required]
+        //[Required]
         public string StaffNum { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
