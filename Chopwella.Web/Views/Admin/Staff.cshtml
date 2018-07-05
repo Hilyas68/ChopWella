@@ -37,6 +37,7 @@
                         <a data-target="#AddModal" data-toggle="modal"> <h3 class="card-title"><div class="btn btn-success">Add New</div></h3></a>
                     </div>
 
+                    <!--Add Modal-->
                     <div class="col-xs-12">
                         <div id="AddModal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
                             <div class="modal-dialog modal-lg">
@@ -89,7 +90,64 @@
                             </div>
                         </div>
                     </div>
+                    <!--End of Add Modal-->
 
+
+
+                    <!--Edit Modal-->
+                    <div class="col-xs-12">
+                        <div id="EditModal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h4 class="modal-title">Edit Staff Records</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="inputStaffName">Name</label>
+                                                <input type="text" class="form-control" placeholder="Staff Name" id="inputStaffName" value="data.Name"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputStaffNumber">Staff Number</label>
+                                                <input type="text" class="form-control" placeholder="aaa/00" id="inputStaffNumber" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email">E-mail</label>
+                                                <input type="text" class="form-control" placeholder="abc@cyberspace.net.ng" id="email" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="category">Category </label>
+
+                                                <select class="form-control" id="category">
+                                                    <option> </option>
+
+                                                    @foreach (var cat in ViewBag.Categories)
+                                                    {
+                                                        <option value="@cat.Id">@cat.Name</option>
+                                                    }
+                                                </select>
+
+                                            </div>
+
+
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-success" id="EditStaff">Save</button>
+                                        <button class="btn btn-success" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End of Edit Modal-->
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
@@ -141,7 +199,7 @@
                         {
                             "data": "Id",
                             "render": function (data) {
-                                return '<button class="btn-edit btn btn-success" type="button">Edit</button>'
+                                return '<button data-target="#EditModal" data-toggle="modal" onclick="Edit(' + data + ')" data-staff-id="data" class="btn-edit btn btn-success" type="button">Edit</button>'
                                     + '          ' + '<a data-staff-id="data" class="btn btn-danger dude" onclick="Delete(' + data + ')" type="button">Delete</a>';
 
                             }
@@ -182,7 +240,7 @@
                 });
             });
 
-            
+
 
 
         });
@@ -193,7 +251,7 @@
                     url: "http://localhost:60532/api/chopwella/deleteStaff/" + id,
                     method: "DELETE",
                     success: function () {
-                        
+
                         alert('Deleted Successfully');
 
                         dataTable.ajax.reload();
@@ -206,6 +264,9 @@
             }
 
         }
+
+      
+
     </script>
 
 
