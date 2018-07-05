@@ -1,9 +1,11 @@
 ﻿using Chopwella.Core;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
+using static Chopwella.Infrastructure.Identity.IdentityModel;
 
 namespace Chopwella.Infrastructure
 {
-    class ChopwellaDBContext : DbContext
+    public class ChopwellaDBContext : IdentityDbContext<AppUser, AppRole, int, AppUserLogin, AppUserRole, AppUserClaim>
     {
         public ChopwellaDBContext() : base("ChopWellaDB")
         {

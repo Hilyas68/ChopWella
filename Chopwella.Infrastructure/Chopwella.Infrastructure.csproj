@@ -36,6 +36,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -53,6 +59,9 @@
     <Compile Include="ChopwellaDBContext.cs" />
     <Compile Include="ChopwellaRepo.cs" />
     <Compile Include="DummyData.cs" />
+    <Compile Include="Identity\AuthStartupManager.cs" />
+    <Compile Include="Identity\IdentityModel.cs" />
+    <Compile Include="IUserRepo.cs" />
     <Compile Include="Migrations\201806232234190_Initial.cs" />
     <Compile Include="Migrations\201806232234190_Initial.Designer.cs">
       <DependentUpon>201806232234190_Initial.cs</DependentUpon>
@@ -61,26 +70,28 @@
     <Compile Include="Migrations\201806232249213_removeReqiredOnStaffEmail.Designer.cs">
       <DependentUpon>201806232249213_removeReqiredOnStaffEmail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.cs" />
-    <Compile Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.Designer.cs">
-      <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201806271205448_changes.cs" />
     <Compile Include="Migrations\201806271205448_changes.Designer.cs">
       <DependentUpon>201806271205448_changes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806280851027_removeRequiredOnBaseEntity.cs" />
-    <Compile Include="Migrations\201806280851027_removeRequiredOnBaseEntity.Designer.cs">
-      <DependentUpon>201806280851027_removeRequiredOnBaseEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201806291821263_staffnumedited.cs" />
+    <Compile Include="Migrations\201806291821263_staffnumedited.Designer.cs">
+      <DependentUpon>201806291821263_staffnumedited.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806280912254_addEmailAddressNotationToStaff.cs" />
-    <Compile Include="Migrations\201806280912254_addEmailAddressNotationToStaff.Designer.cs">
-      <DependentUpon>201806280912254_addEmailAddressNotationToStaff.cs</DependentUpon>
+    <Compile Include="Migrations\201807041056037_Authentication.cs" />
+    <Compile Include="Migrations\201807041056037_Authentication.Designer.cs">
+      <DependentUpon>201807041056037_Authentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807051121414_Auth.cs" />
+    <Compile Include="Migrations\201807051121414_Auth.Designer.cs">
+      <DependentUpon>201807051121414_Auth.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
+    <Compile Include="Modules\UserModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chopwella.Core\Chopwella.Core.csproj">
@@ -111,17 +122,17 @@
     <EmbeddedResource Include="Migrations\201806232249213_removeReqiredOnStaffEmail.resx">
       <DependentUpon>201806232249213_removeReqiredOnStaffEmail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.resx">
-      <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806271205448_changes.resx">
       <DependentUpon>201806271205448_changes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806280851027_removeRequiredOnBaseEntity.resx">
-      <DependentUpon>201806280851027_removeRequiredOnBaseEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806291821263_staffnumedited.resx">
+      <DependentUpon>201806291821263_staffnumedited.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806280912254_addEmailAddressNotationToStaff.resx">
-      <DependentUpon>201806280912254_addEmailAddressNotationToStaff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807041056037_Authentication.resx">
+      <DependentUpon>201807041056037_Authentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051121414_Auth.resx">
+      <DependentUpon>201807051121414_Auth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
