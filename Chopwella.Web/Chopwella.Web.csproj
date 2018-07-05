@@ -123,8 +123,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\aubergines-bio-cabbage-5205.jpg" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Chopwela2-Recovered %281%29.png" />
+    <Content Include="Content\Colors-of-my-Childhood-Nigerian-Fried-Rice-01.jpg" />
     <Content Include="Content\dist\css\adminlte.css" />
     <Content Include="Content\dist\css\adminlte.min.css" />
     <Content Include="Content\dist\img\AdminLTELogo.png" />
@@ -273,6 +278,15 @@
     <Content Include="Content\dist\js\plugins\popper\umd\popper-utils.min.js" />
     <Content Include="Content\dist\js\plugins\popper\umd\popper.js" />
     <Content Include="Content\dist\js\plugins\popper\umd\popper.min.js" />
+    <Content Include="Content\food-dinner-pasta-spaghetti-8500.jpg" />
+    <Content Include="Content\food1.jpg" />
+    <Content Include="Content\Index.js" />
+    <Content Include="Content\james-sutton-198871-unsplash.jpg" />
+    <Content Include="Content\new2.jpg" />
+    <Content Include="Content\new3.jpg" />
+    <Content Include="Content\nigerianfood.jpg" />
+    <Content Include="Content\pexels-photo-106343.jpeg" />
+    <Content Include="Content\pexels-photo-236781.jpeg" />
     <Content Include="Content\plugins\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Content\plugins\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Content\plugins\bootstrap\css\bootstrap-reboot.css" />
@@ -293,6 +307,8 @@
     <Content Include="Content\plugins\jquery\jquery.js" />
     <Content Include="Content\plugins\jquery\jquery.min.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\staffTable.css" />
+    <Content Include="Content\un1.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -357,6 +373,13 @@
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -374,6 +397,7 @@
     <Compile Include="Controllers\api\StaffApiController.cs" />
     <Compile Include="Controllers\api\VendorApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StaffTableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -390,6 +414,7 @@
     <Content Include="Views\Admin\Staff.cshtml" />
     <Content Include="Views\Admin\Vendor.cshtml" />
     <Content Include="Views\Admin\Category.cshtml" />
+    <Content Include="Views\StaffTable\StaffTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,311 @@
+﻿@font-face {
+    font-family: Montserrat-Regular;
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url('../fonts/montserrat/Montserrat-Medium.ttf');
+}
+
+html {
+    min-height: 100%;
+}
+
+
+body {
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('food1.jpg');
+}
+
+#logoutBtn {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+}
+
+#dept {
+    fill: green;
+}
+
+#logout {
+    padding-top: 25px;
+    padding-right: 10px;
+}
+
+header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    background-color: sandybrown;
+    position: relative;
+    width: 100vw;
+    height: 80px;
+    /*display: block;*/
+    background: inherit;
+    /*box-shadow: inset 0 0 0 300px rgba(255,255,255,0.3);*/
+    /*filter: blur(10px);*/
+    overflow: hidden;
+}
+
+    header ::after {
+        content: '';
+        background: inherit;
+        position: absolute;
+        box-shadow: inset 0 0 0 200px rgba(255,255,255,0.5);
+        filter: blur(10px);
+    }
+
+#first {
+    height: 20px;
+    width: 100vw;
+    position: absolute;
+    border-color: black;
+    /*left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;*/
+}
+
+#second {
+    position: relative;
+    z-index: 1;
+    padding-top: 180px;
+    padding-left: 70px
+}
+
+#dept {
+    height: 40px;
+    color: white;
+    background-color: orange !important;
+    border-color: black !important;
+    font-size: 15px;
+    font-style: italic;
+    font-family: 'Yu Gothic';
+}
+
+select:hover {
+    background-color: blue;
+}
+
+#deptDropDown {
+    float: left;
+}
+
+#search {
+    float: left;
+    padding-left: 50px;
+}
+
+#searchInput {
+    height: 40px;
+    text-align: center;
+    color: white;
+    background-color: orange !important;
+    border-color: black !important;
+    font-size: 15px;
+    font-style: italic;
+    font-family: 'Yu Gothic';
+}
+
+#test {
+}
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.table-container {
+    width: 100%;
+    /*min-height:100vh;*/
+    background-color: inherit;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 33px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.wrap-table {
+    width: 1300px;
+}
+
+table {
+    width: 100%;
+    background-color: white
+}
+
+th, td {
+    font-weight: unset;
+    padding-right: 10px;
+}
+
+.columns {
+    width: 130px;
+    padding-left: 25px;
+}
+
+h2 {
+    z-index: 1;
+}
+
+.columns.column1 {
+    width: 265px;
+    padding-left: 42px;
+}
+
+.row#table-bordered {
+    position: relative;
+    z-index: 1;
+}
+
+.row th {
+    padding-top: 24px;
+    padding-bottom: 20px;
+    font-family: Montserrat-Medium;
+    color: white;
+    font-size: 12px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    background-color: black;
+}
+
+.row td {
+    font-family: Montserrat-Regular;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #808080;
+}
+
+.row .rows:hover td {
+    background-color: #83d160;
+    color: #fff;
+}
+
+.row .rows td:hover {
+    background-color: #57b846;
+    color: #fff;
+}
+
+.row tbody tr:nth-child(even) {
+    background-color: #eaf8e6;
+}
+
+
+.slideshow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+    .slideshow li {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        z-index: 0;
+        animation: imageAnimation 50s linear infinite;
+    }
+
+        .slideshow li:nth-child(1) {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('pex1.jpeg');
+        }
+
+        .slideshow li:nth-child(2) {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('james-sutton-198871-unsplash.jpg');
+            animation-delay: 10s;
+        }
+
+        .slideshow li:nth-child(3) {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('aubergines-bio-cabbage-5205.jpg');
+            animation-delay: 20s;
+        }
+
+        .slideshow li:nth-child(4) {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('food-dinner-pasta-spaghetti-8500.jpg');
+            animation-delay: 30s;
+        }
+
+        .slideshow li:nth-child(5) {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('un1.jpg');
+            animation-delay: 40s;
+        }
+
+@keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+    }
+
+    12.5% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    37.5% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes titleAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    12.5% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    37.5% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.no-cssanimations .slideshow li {
+    opacity: 1;
+}
+@media screen and (max-width:480px) {
+    #first{width:37%}
+    #second { width: 17%}
+    .limiter{width:17%}
+}
