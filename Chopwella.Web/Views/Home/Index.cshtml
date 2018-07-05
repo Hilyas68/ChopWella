@@ -18,7 +18,7 @@
             <option value="@cat.Id">@cat.Name</option>
         }
     </select>
-
+   
     <div class="" style="margin-top:30px;">
         <table class="table table-bordered table-striped" id="checkinTb" style="width:100%;">
             <thead>
@@ -47,8 +47,7 @@
 
         $(document).ready(function () {
             var datatable = $('#checkinTb').DataTable();
-
-
+            
             var table = $('#checkinTb');
 
             $(".catId").change(function (event) {
@@ -96,35 +95,31 @@
                         "language": {
                             "checkinTb": "No Record found"
                         }
-                    });
+                    });                    
 
-                    $('#checkinTb').on('click', 'a', function (e) {
-                       
+                    $('#checkinTb').on('click', 'a', function (e) {                     
                         if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
 
                             var data = datatable.row($(this).parents('tr')).data();
+                           
                             //console.log(data);
                             $.ajax({
                                 type: 'POST',
                                 url: '/api/chopwella/AddtoCheckin',
                                 data: data,
-                                success: function (newchecks) {
-
+                                success: function () {
+                                    localStorage.setItem(data, $('#checkinTb').val());
                                 }
                             });
-                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
-                        }
-
-                       
-                    });
-
-                });
-            });
-
-            
+                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");   
+                            
+                        }                       
+                    });    
+                 
+            });          
 
         });
-
+       
         
     </script>
 }

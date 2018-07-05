@@ -3,7 +3,6 @@ using Chopwella.ServiceInterface;
 using Chopwella.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -32,26 +31,7 @@ namespace Chopwella.Web.Controllers.api
                 return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
             }
         }       
-        [Route("CheckinbyId")]
-        [HttpGet]
-        public HttpResponseMessage GetCheckinbyDay(int Id)
-        {
-            try
-            {
-                IEnumerable<CheckIn> check = _checkinservice.GetAll();
-                var checkinbyId = check.Where(m => m.StaffId == Id && m.IsChecked == true).ToList();
-                if (checkinbyId == null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-                }
-                return Request.CreateResponse<IEnumerable<CheckIn>>(HttpStatusCode.OK, checkinbyId);
-            }
-            catch (Exception message)
-            {
-
-                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
-            }
-        }
+       
         [HttpPost]
         [Route("AddtoCheckin")]
         public HttpResponseMessage AddCheckin(CheckinViewModel cvm)
