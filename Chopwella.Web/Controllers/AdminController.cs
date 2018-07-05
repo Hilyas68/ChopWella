@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Chopwella.Core;
+using Chopwella.ServiceInterface;
 using System.Web.Mvc;
 
 namespace Chopwella.Web.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly IServices<Category> catservice;
+
+        public AdminController(IServices<Category> catservice)
+        {
+            this.catservice = catservice;
+        }
         // GET: Admin
         public ActionResult Index()
         {
@@ -15,6 +19,7 @@ namespace Chopwella.Web.Controllers
         }
         public ActionResult Staff()
         {
+            ViewBag.Categories = catservice.GetAll();
             return View();
         }
         public ActionResult Vendor()
