@@ -10,11 +10,11 @@ using System.Web.Http;
 namespace Chopwella.Web.Controllers.api
 {
     [RoutePrefix("api/user")]
-    public class UserController : ApiController
+    public class UserApiController : ApiController
     {
         private readonly IUserRepo repo;
 
-        public UserController(IUserRepo repo)
+        public UserApiController(IUserRepo repo)
         {
             this.repo = repo;
         }

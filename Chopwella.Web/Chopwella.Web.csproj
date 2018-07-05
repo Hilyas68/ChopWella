@@ -395,7 +395,7 @@
     <Compile Include="Controllers\api\CategoryApiController.cs" />
     <Compile Include="Controllers\api\CheckInApiController.cs" />
     <Compile Include="Controllers\api\StaffApiController.cs" />
-    <Compile Include="Controllers\api\UserController.cs" />
+    <Compile Include="Controllers\api\UserApiController.cs" />
     <Compile Include="Controllers\api\VendorApiController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
