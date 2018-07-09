@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Chopwella.Web.Models.CheckinViewModel>
+@{
+    ViewBag.Title = "Checkin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>CheckIn</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">CheckIns</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+
+
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+          
+            <div class="col-12">
+                <!-- /.card -->
+                <div class="container" style="margin-top:30px">
+
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr class="remove">
+                                        <th style="width:20%">Staff Name</th>
+                                        <th style="width:20%">Staff Number</th>
+                                        <th style="width:20%">Week Total</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody"></tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+@section scripts{
+
+
+    <script>
+
+        var dataTable
+        $(document).ready(function () {
+            dataTable = $('#example1').DataTable({
+                "ajax": {
+                    "url": "http://localhost:60532/api/chopwella/CheckInDetails",
+                    "type": "GET",
+                    "dataType": "json",
+                    "dataSrc": ""
+                },
+                "columns":
+                    [
+                        { "data": "Staff.Name" },
+                        { "data": "Staff.StaffNum" },
+                        {
+                            "data": "Id",
+                            "render": function (data) {
+                                return '<a data-staff-id="data" class="Label" onclick="Delete(' + data + ')" type="button">Total</a>';
+
+
+                            }
+                        }
+                    ],
+                "bDestroy": true,
+                "language": {
+                    "emptyTable": "Table is empty"
+                }
+            });
+        })
+    </script>
+
+
+}

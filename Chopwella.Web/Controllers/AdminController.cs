@@ -10,12 +10,14 @@ namespace Chopwella.Web.Controllers
         private readonly IServices<Category> catservice;
         private readonly IServices<Staff> staffservice;
         private readonly IServices<Vendor> vendorservice;
+        private readonly IServices<CheckIn> _checkinservice;
 
-        public AdminController(IServices<Category> catservice, IServices<Staff> staffservice, IServices<Vendor> vendorservice)
+        public AdminController(IServices<Category> catservice, IServices<Staff> staffservice, IServices<Vendor> vendorservice, IServices<CheckIn> _checkinservice)
         {
             this.catservice = catservice;
             this.staffservice = staffservice;
             this.vendorservice = vendorservice;
+            this._checkinservice = _checkinservice;
         }
         // GET: Admin
         public ActionResult Index()
@@ -23,6 +25,7 @@ namespace Chopwella.Web.Controllers
             ViewBag.StaffCount = staffservice.GetAll().Count();
             ViewBag.CatCount = catservice.GetAll().Count();
             ViewBag.VenCount = vendorservice.GetAll().Count();
+            ViewBag.CheckCount = _checkinservice.GetAll().Count();
             return View();
         }
         public ActionResult Staff()
@@ -36,6 +39,11 @@ namespace Chopwella.Web.Controllers
         }
         public ActionResult Category()
         {
+            return View();
+        }
+        public ActionResult CheckIn()
+        {
+            ViewBag.Check = _checkinservice.GetAll();
             return View();
         }
     }

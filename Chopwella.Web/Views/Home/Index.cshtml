@@ -47,7 +47,7 @@
 
         $(document).ready(function () {
             var datatable = $('#checkinTb').DataTable();
-            
+
             var table = $('#checkinTb');
 
             $(".catId").change(function (event) {
@@ -95,13 +95,13 @@
                         "language": {
                             "emptyTable": "No Record found"
                         }
-                    });                    
+                    });
 
-                    $('#checkinTb').on('click', 'a', function (e) {                     
+                    $('#checkinTb').on('click', 'a', function (e) {
                         if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
 
                             var data = datatable.row($(this).parents('tr')).data();
-                           
+
                             //console.log(data);
                             $.ajax({
                                 type: 'POST',
@@ -111,15 +111,15 @@
                                     localStorage.setItem(data, $('#checkinTb').val());
                                 }
                             });
-                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");   
-                            
-                        }                       
-                    });    
-                 
-            });          
+                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
+                            dataTable.ajax.reload();
+                        }
+                    });
 
-        });
-       
+                });
+
+            });
+        })
         
     </script>
 }
