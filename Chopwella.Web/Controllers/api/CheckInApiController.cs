@@ -41,7 +41,7 @@ namespace Chopwella.Web.Controllers.api
                 var checkin = new CheckIn
                 {
                     //Name = cvm.Name,
-                    //StaffId = cvm.Id,
+                    StaffId = cvm.Id,
                     IsChecked = true,
                     VendorId = 1
                 };
