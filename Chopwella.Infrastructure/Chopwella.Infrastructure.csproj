@@ -86,6 +86,14 @@
     <Compile Include="Migrations\201807051121414_Auth.Designer.cs">
       <DependentUpon>201807051121414_Auth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807090703040_RemoveBaseEntity.cs" />
+    <Compile Include="Migrations\201807090703040_RemoveBaseEntity.Designer.cs">
+      <DependentUpon>201807090703040_RemoveBaseEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807090710370_mixedName.cs" />
+    <Compile Include="Migrations\201807090710370_mixedName.Designer.cs">
+      <DependentUpon>201807090710370_mixedName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -133,6 +141,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807051121414_Auth.resx">
       <DependentUpon>201807051121414_Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807090703040_RemoveBaseEntity.resx">
+      <DependentUpon>201807090703040_RemoveBaseEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807090710370_mixedName.resx">
+      <DependentUpon>201807090710370_mixedName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
