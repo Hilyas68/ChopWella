@@ -102,13 +102,13 @@
 
                             var data = datatable.row($(this).parents('tr')).data();
 
-                            //console.log(data);
+                            console.log(data);
                             $.ajax({
                                 type: 'POST',
                                 url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
                                 data: data,
                                 success: function () {
-                                    localStorage.setItem(data, $('#checkinTb').val());
+                                   // localStorage.setItem(data, $('#checkinTb').val());
                                 }
                             });
                             $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
