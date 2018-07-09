@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Chopwella.Core.Staff>
 @{
     ViewBag.Title = "Staff";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -20,7 +20,10 @@
                 </div>
             </div>
         </div><!-- /.container-fluid -->
+
+
     </section>
+
 
     <!-- Main content -->
     <section class="content">
@@ -31,73 +34,133 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><div class="btn btn-success">Add New</div></h3>
+                        <a data-target="#AddModal" data-toggle="modal"> <h3 class="card-title btn btn-success">Add New </h3></a>
                     </div>
+
+                    <!--Add Modal-->
+                    <div class="col-xs-12">
+                        <div id="AddModal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h4 class="modal-title">Add New Staff</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="inputStaffName">Name</label>
+                                                <input type="text" class="form-control" placeholder="Staff Name" id="inputStaffName" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputStaffNumber">Staff Number</label>
+                                                <input type="text" class="form-control" placeholder="aaa/00" id="inputStaffNumber" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email">E-mail</label>
+                                                <input type="text" class="form-control" placeholder="abc@cyberspace.net.ng" id="email" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="category">Category </label>
+
+                                                <select class="form-control" id="category">
+                                                    <option> </option>
+
+                                                    @foreach (var cat in ViewBag.Categories)
+                                                    {
+                                                        <option value="@cat.Id">@cat.Name</option>
+                                                    }
+                                                </select>
+
+                                            </div>
+
+
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-success" id="AddStaff">Add</button>
+                                        <button class="btn btn-success" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End of Add Modal-->
+
+
+
+                    <!--Edit Modal-->
+                    <div class="col-xs-12">
+                        <div id="EditModal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h4 class="modal-title">Edit Staff Records</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="inputStaffName">Name</label>
+                                                <input type="text" class="form-control" placeholder="Staff Name" id="inputStaffName" value="data.Name"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputStaffNumber">Staff Number</label>
+                                                <input type="text" class="form-control" placeholder="aaa/00" id="inputStaffNumber" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email">E-mail</label>
+                                                <input type="text" class="form-control" placeholder="abc@cyberspace.net.ng" id="email" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="category">Category </label>
+
+                                                <select class="form-control" id="category">
+                                                    <option> </option>
+
+                                                    @foreach (var cat in ViewBag.Categories)
+                                                    {
+                                                        <option value="@cat.Id">@cat.Name</option>
+                                                    }
+                                                </select>
+
+                                            </div>
+
+
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-success" id="EditStaff">Save</button>
+                                        <button class="btn btn-success" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End of Edit Modal-->
                     <!-- /.card-header -->
+                    
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Staff Name</th>
-                                    <th>Staff Number</th>
-                                    <th>Email</th>
-                                    <th>category</th>
+                                <tr class="remove">
+                                    <th style="width:20%">Staff Name</th>
+                                    <th style="width:20%">Staff Number</th>
+                                    <th style="width:20%">Email</th>
+                                    <th style="width:20%">Category</th>
+                                    <th style="width:10%">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-                                <tr>
-                                    <td>4</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-                                <tr>
-                                    <td>5</td>
-                                    <td>
-                                        Osezuah Winifred
-                                    </td>
-                                    <td>INT/01</td>
-                                    <td> winifred@gmail.com</td>
-                                    <td>CyberAcademy Staff</td>
-                                </tr>
-
-
-                            </tbody>
 
                         </table>
                     </div>
@@ -111,3 +174,101 @@
     </section>
     <!-- /.content -->
 </div>
+
+@section scripts{
+
+
+    <script>
+        var dataTable
+        $(document).ready(function () {
+
+            dataTable = $('#example1').DataTable({
+                //configuration settings for the table
+                "ajax": {
+                    "url": "http://localhost:60532/api/chopwella/staff",
+                    "type": "GET",
+                    "dataType": "json",
+                    "dataSrc": "" //render as array not json
+                },
+                "columns":
+                    [
+
+                        { "data": "Name" },
+                        { "data": "StaffNum" },
+                        { "data": "Email" },
+                        { "data": "Category.Name" },
+                        {
+                            "data": "Id",
+                            "render": function (data) {
+                                return '<button data-target="#EditModal" data-toggle="modal" onclick="Edit(' + data + ')" data-staff-id="data" class="btn-edit btn btn-success" type="button">Edit</button>'
+                                    + '          ' + '<a data-staff-id="data" class="btn btn-danger dude" onclick="Delete(' + data + ')" type="button">Delete</a>';
+
+                            }
+
+                        }
+                    ],
+
+                "bDestroy": true,
+
+                "language": {
+                    "emptyTable": "Table is empty"
+                }
+            });
+
+            $("#AddStaff").click(function (e) {
+                e.preventDefault();
+                var formData = {};
+
+                formData.Name = $('#inputStaffName').val();
+                formData.StaffNum = $('#inputStaffNumber').val();
+                formData.Email = $('#email').val();
+                formData.CategoryId = $('#category option:selected').val();
+
+                $.ajax({
+                    url: 'http://localhost:60532/api/chopwella/AddStaff',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function () {
+                        alert('Success');
+                        $('#AddModal').modal('hide');
+                        dataTable.ajax.reload();
+
+                    },
+                    error: function (jqXHR) {
+                        alert(`${jqXHR.responseText}`);
+                    }
+                });
+            });
+
+
+
+
+        });
+
+        function Delete(id) {
+            if (confirm("Are you sure you want to delete this staff?")) {
+                $.ajax({
+                    url: "http://localhost:60532/api/chopwella/deleteStaff/" + id,
+                    method: "DELETE",
+                    success: function () {
+
+                        alert('Deleted Successfully');
+
+                        dataTable.ajax.reload();
+                    },
+                    error: function (jqXHR) {
+                        alert(`${jqXHR.responseText}`);
+                    }
+                });
+
+            }
+
+        }
+
+      
+
+    </script>
+
+
+}

@@ -56,7 +56,7 @@
                     datatable.destroy();
                     datatable = table.DataTable({
                         "ajax": {
-                            "url": "api/chopwella/staffbyCat/" + catId,
+                            "url": "http://localhost:60532/api/chopwella/staffbyCat/" + catId,
                             "type": "GET",
                             "dataType": "json",
                             "dataSrc": "",
@@ -93,7 +93,7 @@
                         "keepConditions": "true",
 
                         "language": {
-                            "checkinTb": "No Record found"
+                            "emptyTable": "No Record found"
                         }
                     });                    
 
@@ -105,7 +105,7 @@
                             //console.log(data);
                             $.ajax({
                                 type: 'POST',
-                                url: '/api/chopwella/AddtoCheckin',
+                                url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
                                 data: data,
                                 success: function () {
                                     localStorage.setItem(data, $('#checkinTb').val());

@@ -36,6 +36,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -53,6 +59,9 @@
     <Compile Include="ChopwellaDBContext.cs" />
     <Compile Include="ChopwellaRepo.cs" />
     <Compile Include="DummyData.cs" />
+    <Compile Include="Identity\AuthStartupManager.cs" />
+    <Compile Include="Identity\IdentityModel.cs" />
+    <Compile Include="IUserRepo.cs" />
     <Compile Include="Migrations\201806232234190_Initial.cs" />
     <Compile Include="Migrations\201806232234190_Initial.Designer.cs">
       <DependentUpon>201806232234190_Initial.cs</DependentUpon>
@@ -69,10 +78,28 @@
     <Compile Include="Migrations\201806291821263_staffnumedited.Designer.cs">
       <DependentUpon>201806291821263_staffnumedited.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807041056037_Authentication.cs" />
+    <Compile Include="Migrations\201807041056037_Authentication.Designer.cs">
+      <DependentUpon>201807041056037_Authentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807051121414_Auth.cs" />
+    <Compile Include="Migrations\201807051121414_Auth.Designer.cs">
+      <DependentUpon>201807051121414_Auth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807090703040_RemoveBaseEntity.cs" />
+    <Compile Include="Migrations\201807090703040_RemoveBaseEntity.Designer.cs">
+      <DependentUpon>201807090703040_RemoveBaseEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807090710370_mixedName.cs" />
+    <Compile Include="Migrations\201807090710370_mixedName.Designer.cs">
+      <DependentUpon>201807090710370_mixedName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
+    <Compile Include="Modules\UserModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chopwella.Core\Chopwella.Core.csproj">
@@ -108,6 +135,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806291821263_staffnumedited.resx">
       <DependentUpon>201806291821263_staffnumedited.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807041056037_Authentication.resx">
+      <DependentUpon>201807041056037_Authentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051121414_Auth.resx">
+      <DependentUpon>201807051121414_Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807090703040_RemoveBaseEntity.resx">
+      <DependentUpon>201807090703040_RemoveBaseEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807090710370_mixedName.resx">
+      <DependentUpon>201807090710370_mixedName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -30,8 +30,8 @@ namespace Chopwella.Web.Controllers.api
             {
                 return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
             }
-        }       
-       
+        }
+
         [HttpPost]
         [Route("AddtoCheckin")]
         public HttpResponseMessage AddCheckin(CheckinViewModel cvm)
@@ -40,9 +40,9 @@ namespace Chopwella.Web.Controllers.api
             {
                 var checkin = new CheckIn
                 {
-                    Name=cvm.Name,
-                    StaffId=cvm.Id,
-                    IsChecked=true,
+                    //Name = cvm.Name,
+                    StaffId = cvm.Id,
+                    IsChecked = true,
                     VendorId = 1
                 };
                 _checkinservice.Add(checkin);
@@ -53,7 +53,7 @@ namespace Chopwella.Web.Controllers.api
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
-            
-        }       
+
+        }
     }
 }

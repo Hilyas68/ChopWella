@@ -31,66 +31,50 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><div class="btn btn-success">Add New</div></h3>
+                        <a data-target="#AddModalCategory" data-toggle="modal"><h3 class="card-title btn btn-success">Add New </h3></a>
                     </div>
+                    <!--Modal Popup -->
+                    <div class="col-xs-12">
+                        <div id="AddModalCategory" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Add New Category</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="inputCategoryName">Name</label>
+                                                <input type="text" class="form-control" placeholder="Category Name.." id="inputCategoryName" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-success" id="AddCategory">Add</button>
+                                        <button class="btn btn-success" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Category Name</th>
                                     
+                                    <th>Category Name</th>
+                                    <th>Actions</th>
+
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        Cyberacademy
-                                    </td>
-                                   
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        Senior Staffs
-                                    </td>
-                                  
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        Junior Staffs
-                                    </td>
-                                   
-                                </tr>
-
-                                <tr>
-                                    <td>4</td>
-                                    <td>
-                                       Contract Staffs
-                                    </td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td>5</td>
-                                    <td>
-                                        IT/NYSC
-                                    </td>
-                                   
-                                </tr>
-
-
-                            </tbody>
-
                         </table>
                     </div>
                     <!-- /.card-body -->
-                </div>
+                </div> 
                 <!-- /.card -->
             </div>
             <!-- /.col -->
@@ -99,5 +83,84 @@
     </section>
     <!-- /.content -->
 </div>
+@section scripts{
+    <script>
+        var dataTable
+        $(document).ready(function () {
+
+             dataTable = $('#example1').DataTable({
+                //configuration settings for the table
+                "ajax": {
+                    "url": "http://localhost:60532/api/chopwella/category",
+                    "type": "GET",
+                    "dataType": "json",
+                    "dataSrc": "" //render as array not json
+                },
+                "columns":
+                    [
+                        
+                        { "data": "Name" },
+                        {
+                            "data": "Id",
+                            "render": function (data) {
+                                return '<button class="btn-edit btn btn-success" type="button">Edit</button>'
+                                    + ' ' + '<a data-staff-id="data" class="btn btn-danger" onclick="Delete(' + data + ')" type="button">Delete</a>';
+
+                            }
+
+                        }
+                    ],
+                "bDestroy": true,
+
+                "language": {
+                    "emptyTable": "Table is empty"
+                }
+            });
+
+            $('#AddCategory').click(function (e) {
+                e.preventDefault();
+                var formData = {};
+                formData.Name = $('#inputCategoryName').val();
+
+                $.ajax({
+                    url: 'http://localhost:60532/api/chopwella/addCategory',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function () {
+                        alert('Added Successfully');
+                        $('#AddModalCategory').modal('hide');
+                        dataTable.ajax.reload();
+                    },
+                    error: function (jqXHR) {
+                        alert(`${jqXHR.responseText}`);
+                    }
+                });
+            });
+
+
+        });
+        function Delete(id) {
+            if (confirm("Are you sure you want to delete this staff?")) {
+                $.ajax({
+                    url: "http://localhost:60532/api/chopwella/deleteCategory/" + id,
+                    method: "DELETE",
+                    success: function () {
+
+                        alert('Deleted Successfully');
+
+                        dataTable.ajax.reload();
+                    },
+                    error: function (jqXHR) {
+                        alert(`${jqXHR.responseText}`);
+                    }
+                })
+
+            }
+
+        }
+
+    </script>
+}
 
 

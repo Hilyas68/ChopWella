@@ -1,5 +1,10 @@
 ﻿using Chopwella.Core;
+using Chopwella.Infrastructure.Identity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
+using static Chopwella.Infrastructure.Identity.IdentityModel;
 
 namespace Chopwella.Infrastructure
 {
@@ -42,5 +47,48 @@ namespace Chopwella.Infrastructure
         public static IEnumerable<Staff> GetStaff() => new List<Staff> { staff1, staff2, staff3, staff4, staff5, staff6, staff7, staff8, staff9, staff10 };
         public static IEnumerable<Visitor> GetVisitors() => new List<Visitor> { visitor1, visitor2 };
         public static IEnumerable<CheckIn> GetCheckIns() => new List<CheckIn> { check1, check2, check3, check4, check5 };
+
+        public static void CreateFirstAdmin()
+        {
+            string[] roles = new string[2] { "ADMIN", "VENDOR" };
+            var roleStore = new RoleStore<AppRole, int, AppUserRole>(new ChopwellaDBContext());
+            var roleManager = new RoleManager<AppRole, int>(roleStore);
+
+            Array.ForEach(roles, r =>
+            {
+                if (roleManager.RoleExists(r))
+                    return;
+
+                roleManager.Create(new AppRole() { Name = r });
+            });
+
+
+            string username = "admin@cyberspace.com";
+            string password = "admin";
+            string role = "ADMIN";
+
+            //IUserStore<Contact> contactStore = new UserStore<Contact>(new AcademyDbContext());
+            //UserManager<Contact, string> userMgr = new UserManager<Contact, string>(contactStore);
+            var userMgr = AuthStartupManager.UserManagerFactory.Invoke();
+
+
+            if (userMgr.FindByName(username) != null)
+                return;
+
+
+            var user = new AppUser() { UserName = username, Email = username };
+            var result = userMgr.Create(user, password);
+
+            if (!roleManager.RoleExists(role))
+            {
+                var irole = new AppRole() { Name = role };
+                roleManager.Create(irole);
+            }
+
+            if (!userMgr.IsInRole(user.Id, role))
+            {
+                userMgr.AddToRole(user.Id, role);
+            }
+        }
     }
 }

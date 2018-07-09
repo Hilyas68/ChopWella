@@ -28,6 +28,8 @@ namespace Chopwella.Infrastructure.Migrations
             context.Set<Staff>().AddRange(staff);
             context.Set<Visitor>().AddRange(visitors);
             context.Set<CheckIn>().AddRange(checkIns);
+
+            DummyData.CreateFirstAdmin();
         }
     }
 }
