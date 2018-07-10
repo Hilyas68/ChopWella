@@ -1,4 +1,4 @@
-﻿
+﻿@model Chopwella.Web.ViewModels.UserViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -61,14 +61,14 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>1</h3>
+                            <h3>@ViewBag.AdminCount</h3>
 
                             <p>Admin</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a data-target="#loginModal" data-toggle="modal" class="small-box-footer">Add New Admin/Vendor Login <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -110,3 +110,108 @@
     <!-- /.content -->
 </div>
 
+<div class="col-xs-12">
+    <div id="loginModal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Add New Login Details</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" placeholder="Username..." id="username" name="username" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" placeholder="Password..." id="password" name="password" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ConfirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="Confirm Password..." id="ConfirmPassword" name="ConfirmPassword" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <select class="form-control" id="role" name="RoleName">
+                                @foreach (var role in Model.Roles)
+                                    {
+                                        <option value="@role.Id">@role.Name</option>
+                                    }
+                            </select>
+
+                        </div>
+
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <img src="~/Content/img/ajax-loader.gif" id="loader" style="display:none"/>
+                    <button class="btn btn-success" id="AddLogin">Add</button>
+                    <button class="btn btn-success" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $.ajaxSetup({
+                beforeSend: function () {
+                    $('#loader').show();
+                },
+                complete: function () {
+                    $('#loader').hide();
+
+                }
+            });
+            
+
+
+            $("#AddLogin").click(function (e) {
+                e.preventDefault();
+                var formData = {};
+
+                formData.UserName = $('#username').val();
+                formData.Password = $('#password').val();
+                formData.ConfirmPassword = $('#ConfirmPassword').val();
+                formData.RoleName = $('#role option:selected').text();
+
+                $.ajax({
+                    url: 'http://localhost:60532/api/user/create',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function () {
+                        alert('Created Successfully');
+                        $('#loginModal').modal('hide');
+                    },
+                    error: function (jqXHR) {
+                        alert(`${jqXHR.responseText}`);
+                    }
+                });
+            });
+
+        });
+
+
+
+
+    </script>
+
+
+
+
+
+}
+   

@@ -20,27 +20,31 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
+
+        <div class="row">
+            <div class="col-sm-6">
+                <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="Index" class="nav-link">Home</a>
+                        </li>
+                    </ul>
+                    <!-- Right navbar links -->
+                </nav>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <div class="float-sm-right">
+                    <a class="btn btn-default col-sm-push" href="@Url.Action("Logout","Auth")">Log Out</a>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="Index" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-            </ul>
-
-
-
-            <!-- Right navbar links -->
-
-        </nav>
-
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -67,7 +71,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-open">
                             <a href="Index" class="nav-link active">
                                 <i class="nav-icon fa fa-dashboard"></i>
@@ -254,6 +258,7 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
+    <script src="~/Scripts/jquery.validate.js"></script>
 
     <!-- Bootstrap 4 -->
     <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -276,7 +281,7 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
-               
+
             });
         });
     </script>
