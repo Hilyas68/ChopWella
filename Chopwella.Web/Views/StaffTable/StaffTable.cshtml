@@ -31,7 +31,12 @@
     <div id="second" class="row">
         <div id="deptDropDown">
             <select id="dept">
-                @*<option selected disabled>----CATEGORIES----</option>*@
+                <option value="-1">---Select Category---</option>
+
+                @foreach (var cat in ViewBag.Categories)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
             </select>
         </div>
         <div id="search">
@@ -84,7 +89,7 @@
     $(document).ready(function () {
         $.ajax({
             type: 'get',
-            url: 'api/chopwella/category', 
+            url: 'api/chopwella/category',
             contentType: 'application/json;charset=utf-8',
             data: {},
             success: function (result) {

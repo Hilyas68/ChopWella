@@ -16,12 +16,15 @@ body {
     height: 100%;
     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('food1.jpg');
 }
-
+#bodyc{
+    width:100%;
+    position: absolute;
+}
 #logoutBtn {
     background-color: green;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -34,23 +37,33 @@ body {
 }
 
 #logout {
-    padding-top: 25px;
-    padding-right: 10px;
+    padding-top: 10px; /*25px*/
+    position: absolute;
+    right: 5px; /*50px*/
+    float: right;
+    top: 0;
+    position:fixed;
 }
-
+#chopLogo {
+    background-size: cover;
+    width: 30%;
+    left: 0px;
+    /*height: 50%;*/
+    max-width: 200px;
+    min-width: 100px;
+    position: relative;
+    z-index: 1;
+    position: fixed;
+}
 header {
     z-index: 1;
-    position: relative;
+    position: absolute;
     text-align: center;
-    background-color: sandybrown;
-    position: relative;
+    position: absolute;
     width: 100vw;
-    height: 80px;
+    height: 50px; /*100px*/
     /*display: block;*/
     background: inherit;
-    /*box-shadow: inset 0 0 0 300px rgba(255,255,255,0.3);*/
-    /*filter: blur(10px);*/
-    overflow: hidden;
 }
 
     header ::after {
@@ -75,8 +88,9 @@ header {
 #second {
     position: relative;
     z-index: 1;
-    padding-top: 180px;
-    padding-left: 70px
+    padding-top: 80px; /*180px;*/
+    padding-left: 10px; /*100px;*/
+    
 }
 
 #dept {
@@ -95,30 +109,14 @@ select:hover {
 
 #deptDropDown {
     float: left;
-}
-
-#search {
-    float: left;
-    padding-left: 50px;
-}
-
-#searchInput {
-    height: 40px;
-    text-align: center;
-    color: white;
-    background-color: orange !important;
-    border-color: black !important;
-    font-size: 15px;
-    font-style: italic;
-    font-family: 'Yu Gothic';
-}
-
-#test {
+    margin-left: 20px;
+    padding-top: 60px;
 }
 
 .limiter {
     width: 100%;
     margin: 0 auto;
+    padding-left:10px;
 }
 
 .table-container {
@@ -133,23 +131,37 @@ select:hover {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 33px 30px;
+    padding: 33px 10px;
     position: relative;
     z-index: 1;
 }
 
 .wrap-table {
-    width: 1300px;
+    width: 1000px;
+    margin-top: .75em;
+    padding-top: 0px;
 }
 
-table {
-    width: 100%;
-    background-color: white
+.table {
+    width: 50%;
+    background-color: inherit;
+    padding-left:0px;
+    float:left;
+    position:center;
+    right:20px;
 }
-
+table>tbody>.sorting_1{
+    position:fixed;
+}
+  
+    #t2 {
+        position: absolute;
+        width: inherit;
+    }
 th, td {
     font-weight: unset;
     padding-right: 10px;
+ 
 }
 
 .columns {
@@ -175,18 +187,20 @@ h2 {
     padding-top: 24px;
     padding-bottom: 20px;
     font-family: Montserrat-Medium;
-    color: white;
+    color: ;
     font-size: 12px;
     line-height: 1.4;
     text-transform: uppercase;
-    background-color: black;
+    font-size:15px;
+    font-style:italic;
+    position:center;
 }
 
 .row td {
     font-family: Montserrat-Regular;
     font-size: 14px;
     line-height: 1.4;
-    color: #808080;
+    color: green;
 }
 
 .row .rows:hover td {
@@ -198,11 +212,100 @@ h2 {
     background-color: #57b846;
     color: #fff;
 }
-
+    
 .row tbody tr:nth-child(even) {
-    background-color: #eaf8e6;
+    background-color:orange;
+}
+.row tbody tr:nth-child(odd) {
+    background-color: floralwhite;
+}
+.dataTables_wrapper{
+    position:center center;
+}
+.dataTables_length > label {
+    font-family: Montserrat-Medium;
+    font-size: 25px;
+    font-style: italic;
+    color: orange;
+}
+.dataTables_length > label>select:hover {
+    color:orange;
+    background-color: green;
+}
+.dataTables_filter > label {
+    font-family: Montserrat-Medium;
+    font-size: 25px;
+    font-style: italic;
+    color: orange;
+    position: absolute;
+    float: right;
+    padding: 0px 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    top: 0;
+}
+.dataTables_filter{
+    padding-left:0px;
+    padding-top: 0px;
+}
+.dataTables_wrapper > .row:nth-child(1) {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.dataTables_wrapper > .row:nth-child(2) {
+    position: relative;
+}
+.dataTables_wrapper > .row:nth-child(3) {
+    position: relative;
+}
+.dataTables_info {
+    font-family: Montserrat-Medium;
+    font-style: italic;
+  color:grey;
+   background-color:orange;
 }
 
+@media(min-width:576px){
+    .dataTables_wrapper > .row:nth-child(2) {
+        padding-top: 20px;
+        width: 100%;
+        position: center center;
+    }
+}
+
+@media(min-width:768px) {
+    .dataTables_wrapper > .row:nth-child(2) {
+        padding-top: 50px;
+        width: 100%;
+        position: center center;
+        
+    }
+    .table-responsive{
+        right:50px;
+        float:left;
+    }
+}
+@media(min-width:992px) {
+    .dataTables_wrapper > .row:nth-child(2) {
+        padding-top: 20px;
+        width: 100%;
+       position:center center;
+    }
+}
+@media(min-width:1200px) {
+    .dataTables_wrapper > .row:nth-child(2) {
+        padding-top: 50px;
+        width: 100%;
+        position: center center;
+    }
+    @media(max-width:575px) {
+        .dataTables_wrapper > .row:nth-child(2) {
+            padding-top: 50px;
+            width: 100%;
+            position: center center;
+           
+        }
+    }
 
 .slideshow {
     position: fixed;
