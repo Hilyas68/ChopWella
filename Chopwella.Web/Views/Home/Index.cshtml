@@ -18,7 +18,7 @@
             <option value="@cat.Id">@cat.Name</option>
         }
     </select>
-   
+
     <div class="" style="margin-top:30px;">
         <table class="table table-bordered table-striped" id="checkinTb" style="width:100%;">
             <thead>
@@ -52,6 +52,7 @@
 
             $(".catId").change(function (event) {
                 var catId = $(this).val();
+
                 $(function () {
                     datatable.destroy();
                     datatable = table.DataTable({
@@ -67,29 +68,58 @@
                             { "data": "Name" },
                             { "data": "StaffNum" },
                             {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Monday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             }, {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Tuesday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             }, {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Wednesday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             }, {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Thursday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             },
 
                             {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Friday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             }
                         ],
+
+                        rowId: 'extn',
+                        select: true,
+                        dom: 'Bfrtip',
                         "keepConditions": "true",
 
                         "language": {
@@ -97,29 +127,56 @@
                         }
                     });
 
-                    $('#checkinTb').on('click', 'a', function (e) {
-                        if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
+                    var clickedValue;
+                    $('#checkinTb').on('click', 'td', function () {
+                        clickedValue = datatable.cell(this).data();
+                        console.log("value =" + clickedValue)
 
-                            var data = datatable.row($(this).parents('tr')).data();
 
-                            console.log(data);
-                            $.ajax({
-                                type: 'POST',
-                                url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
-                                data: data,
-                                success: function () {
-                                   // localStorage.setItem(data, $('#checkinTb').val());
-                                }
-                            });
-                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
-                            dataTable.ajax.reload();
-                        }
+
+                        $('#checkinTb').on('click', 'a', function (e) {
+                            if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
+
+                                var data = datatable.row($(this).parents('tr')).data();
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
+                                    data: {
+                                        'Id': data.Id,
+                                        'CategoryId': data.CategoryId,
+                                        'Email': data.Email,
+                                        'Name': data.Name,
+                                        'StaffNum': data.StaffNum,
+                                        'Monday': (clickedValue == false) ? true : false,
+                                        //'Tuesday': (clickedValue == false) ? true : false,
+                                        //'Wednesday': (clickedValue == false) ? true : false,
+                                        //'Thursday': (clickedValue == false) ? true : false,
+                                        //'Friday': (clickedValue == false) ? true : false,
+
+                                    },
+
+                                    success: function (data) {
+
+                                    },
+                                    error: function (response) {
+                                        alert("An error Occured, Please try again");
+                                    }
+                                });
+
+                                $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
+                                $('.btn-success').prop('disabled', true);
+
+                            }
+
+                        });
                     });
 
                 });
 
             });
+
         })
-        
+
     </script>
 }

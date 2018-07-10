@@ -35,6 +35,7 @@ namespace Chopwella.Web.Controllers
         }
         public ActionResult Vendor()
         {
+            ViewBag.Vendor = vendorservice.GetAll();
             return View();
         }
         public ActionResult Category()
