@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Chopwella.Infrastructure.Identity;
-using Microsoft.AspNet.Identity;
 using static Chopwella.Infrastructure.Identity.IdentityModel;
 
 namespace Chopwella.Infrastructure
@@ -16,5 +15,6 @@ namespace Chopwella.Infrastructure
         Task<AppUser> SignIn(string username, string password);
         Task<ClaimsIdentity> FindUserAsync(AppUser user, string authType);
         bool IsInRole(AppUser user, string role);
+        IEnumerable<AppUser> GetUsersByRoles(int roleId);
     }
 }
