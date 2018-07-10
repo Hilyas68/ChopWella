@@ -20,7 +20,7 @@ namespace Chopwella.Web.Controllers.api
         }
 
         [Route("category")]
-        public HttpResponseMessage GetCatetories()
+        public HttpResponseMessage GetCategories()
         {
             try
             {

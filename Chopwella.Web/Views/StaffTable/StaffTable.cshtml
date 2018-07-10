@@ -1,0 +1,105 @@
+﻿@model List<Category>
+@using Chopwella.Core
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Main</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/staffTable.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <link href=" https://fonts.googleapis.com/css?family=Montserrat:400,700" rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="first" class="container">
+        <header class="row">
+            <div id="chopLogo" class="col-lg-1 col-md-1 col-sm-2">
+                <a href="">
+                    <img class="img-responsive" src="~/Content/Chopwela2-Recovered (1).png" />
+                </a>
+            </div>
+            <div id="logout" class="col-lg-2 col-lg-offset-8 col-md-1 col-md-offset-7 col-sm-1 col-sm-offset-7">
+                <button type="button" id="logoutBtn" class="btn btn-secondary float-right">LOGOUT</button>
+            </div>
+        </header>
+    </div>
+    <div id="second" class="row">
+        <div id="deptDropDown">
+            <select id="dept">
+                <option value="-1">---Select Category---</option>
+
+                @foreach (var cat in ViewBag.Categories)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
+            </select>
+        </div>
+        <div id="search">
+            <input type="search" id="searchInput" placeholder="Search" />
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+    <div class="limiter">
+        <div class="table-container">
+            <div class="wrap-table">
+                <div class="row">
+                    <h2>Tables Test</h2>
+                    <table class="table table-bordered" id="table">
+                        <thead>
+                            <tr class="rows head">
+                                <th class="columns" data-column="column1">Staff ID</th>
+                                <th>Full Names</th>
+                                <th>MONDAY</th>
+                                <th>TUESDAY</th>
+                                <th>WEDNESDAY</th>
+                                <th>THUSRDAY</th>
+                                <th>FRIDAY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="rows">
+                                <td>00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="slideshow">
+        <li> </li>
+        <li> </li>
+        <li> </li>
+        <li> </li>
+
+    </ul>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: 'get',
+            url: 'api/chopwella/category',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (result) {
+                $.each(result, function (i) {
+                    $('#dept').append($('<option></option>').val(result[i].ID).html(result[i].Name));
+                });
+            },
+            failure: function () {
+                alert("error");
+            }
+        }
+    })
+</script>
