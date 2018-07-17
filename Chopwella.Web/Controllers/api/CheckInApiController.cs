@@ -67,7 +67,7 @@ namespace Chopwella.Web.Controllers.api
                     Thursday = cvm.Thursday,
                     Friday = cvm.Friday,
                     CategoryId = cvm.CategoryId,
-                    Name = cvm.StaffNum,
+                    Name = cvm.Name,
                     StaffNum = cvm.StaffNum,
                     Id = cvm.Id,
                     Email = cvm.Email
@@ -89,23 +89,6 @@ namespace Chopwella.Web.Controllers.api
             }
 
         }
-
-        //[Route("staffbyCat/{Id}")]
-        //public HttpResponseMessage GetStaffByCategory([FromUri]int Id)
-        //{
-        //    try
-        //    {
-        //        IEnumerable<Vendor> vendor = vendorservices.GetAll();
-        //        var vendorByCategory = vendor.Where(m => m.Id== Id).ToList();
-
-        //        return this.Request.CreateResponse<IEnumerable<Staff>>(HttpStatusCode.Created, vendorByCategory);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
-        //    }
-        //}
 
         public void UpdateStaff(Staff staff)
         {

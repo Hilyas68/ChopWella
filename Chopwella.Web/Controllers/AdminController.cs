@@ -11,12 +11,10 @@ namespace Chopwella.Web.Controllers
     {
         private readonly IServices<Category> catservice;
         private readonly IServices<Staff> staffservice;
+        private readonly IServices<CheckIn> _checkinservice;
         private readonly IServices<Vendor> vendorservice;
         private readonly IUserRepo userRepo;
-        public AdminController(IServices<Category> catservice, IServices<Staff> staffservice, IServices<Vendor> vendorservice, IUserRepo userRepo)
-        private readonly IServices<CheckIn> _checkinservice;
-
-        public AdminController(IServices<Category> catservice, IServices<Staff> staffservice, IServices<Vendor> vendorservice, IServices<CheckIn> _checkinservice)
+        public AdminController(IServices<Category> catservice, IServices<Staff> staffservice, IServices<Vendor> vendorservice, IUserRepo userRepo, IServices<CheckIn> _checkinservice)
         {
             this.catservice = catservice;
             this.staffservice = staffservice;
@@ -24,11 +22,12 @@ namespace Chopwella.Web.Controllers
             this.userRepo = userRepo;
             this._checkinservice = _checkinservice;
         }
-        // GET: Admin
+       
         public ActionResult Index()
         {
             ViewBag.StaffCount = staffservice.GetAll().Count();
             ViewBag.CatCount = catservice.GetAll().Count();
+            ViewBag.CheckCount = _checkinservice.GetAll().Count();
             //ViewBag.VenCount = vendorservice.GetAll().Count();
             ViewBag.AdminCount = userRepo.GetUsersByRoles(1).Count();
             ViewBag.VenCount = userRepo.GetUsersByRoles(2).Count();
@@ -37,9 +36,9 @@ namespace Chopwella.Web.Controllers
                 Roles = Create
             };
             return View(model);
-            ViewBag.VenCount = vendorservice.GetAll().Count();
-            ViewBag.CheckCount = _checkinservice.GetAll().Count();
-            return View();
+            //ViewBag.VenCount = vendorservice.GetAll().Count();
+            //ViewBag.CheckCount = _checkinservice.GetAll().Count();
+            //return View();
         }
         public ActionResult Staff()
         {
