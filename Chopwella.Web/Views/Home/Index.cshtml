@@ -134,10 +134,11 @@
                     $('#checkinTb tbody').on('click', 'td', function (e) {
 
                         if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
-                          var data = datatable.row($(this).parents('tr')).data();                          
+                          var data = datatable.row($(this).parents('tr')).data();                      
                                                  
                             clickedValue = this.cellIndex;
-                            alert("clicked cell :" + clickedValue);
+                            console.log(clickedValue);
+                          
                             $.ajax({
                                 type: 'POST',
                                 url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
@@ -156,7 +157,7 @@
 
                                 },
                                 success: function () {
-
+                                   
                                 }
                             });
                             $(this).removeClass("btn-default").addClass("btn-success").text("Signed");                           
