@@ -94,6 +94,18 @@
     <Compile Include="Migrations\201807090710370_mixedName.Designer.cs">
       <DependentUpon>201807090710370_mixedName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807100714151_addedDayclass.cs" />
+    <Compile Include="Migrations\201807100714151_addedDayclass.Designer.cs">
+      <DependentUpon>201807100714151_addedDayclass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807100729183_ChangeDayToInterface.cs" />
+    <Compile Include="Migrations\201807100729183_ChangeDayToInterface.Designer.cs">
+      <DependentUpon>201807100729183_ChangeDayToInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807100817038_removeId.cs" />
+    <Compile Include="Migrations\201807100817038_removeId.Designer.cs">
+      <DependentUpon>201807100817038_removeId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -147,6 +159,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807090710370_mixedName.resx">
       <DependentUpon>201807090710370_mixedName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807100714151_addedDayclass.resx">
+      <DependentUpon>201807100714151_addedDayclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807100729183_ChangeDayToInterface.resx">
+      <DependentUpon>201807100729183_ChangeDayToInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807100817038_removeId.resx">
+      <DependentUpon>201807100817038_removeId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

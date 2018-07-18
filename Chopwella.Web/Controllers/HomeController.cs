@@ -17,6 +17,6 @@ namespace Chopwella.Web.Controllers
         {
             ViewBag.Categories = catservice.GetAll();
             return View();
-        }
+        }       
     }
 }
