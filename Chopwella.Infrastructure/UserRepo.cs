@@ -1,12 +1,8 @@
-﻿using Chopwella.DomainInterface;
-using Chopwella.Infrastructure.Identity;
+﻿using Chopwella.Infrastructure.Identity;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using static Chopwella.Infrastructure.Identity.IdentityModel;
 
@@ -65,7 +61,7 @@ namespace Chopwella.Infrastructure
             var user = await userMgr.FindAsync(username, password);
             return user;
         }
-       
+
         public async Task<ClaimsIdentity> FindUserAsync(AppUser user, string authType)
         {
             return await userMgr.CreateIdentityAsync(user, authType);
@@ -74,6 +70,14 @@ namespace Chopwella.Infrastructure
         public bool IsInRole(AppUser user, string role)
         {
             return userMgr.IsInRole(user.Id, role);
+        }
+
+        public IEnumerable<AppUser> GetUsersByRoles(int roleId)
+        {
+            return from user in userMgr.Users
+                   where user.Roles.Any(r => r.RoleId == roleId)
+                   select user;
+
         }
     }
 }
