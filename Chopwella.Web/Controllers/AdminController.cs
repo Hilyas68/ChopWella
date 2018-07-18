@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Chopwella.Web.Controllers
 {
+    [Authorize(Roles = "ADMIN")]
     public class AdminController : Controller
     {
         private readonly IServices<Category> catservice;
@@ -29,7 +30,8 @@ namespace Chopwella.Web.Controllers
             ViewBag.AdminCount = userRepo.GetUsersByRoles(1).Count();
             ViewBag.VenCount = userRepo.GetUsersByRoles(2).Count();
             var Create = userRepo.GetRoles;
-            var model = new UserViewModel {
+            var model = new UserViewModel
+            {
                 Roles = Create
             };
             return View(model);

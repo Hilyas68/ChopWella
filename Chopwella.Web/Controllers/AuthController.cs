@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Chopwella.Web.Controllers
 {
+    [AllowAnonymous]
     public class AuthController : Controller
     {
 
