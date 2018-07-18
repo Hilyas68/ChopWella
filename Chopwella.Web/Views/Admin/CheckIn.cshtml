@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Chopwella.Web.Models.CheckinViewModel>
+@{
+    ViewBag.Title = "Checkin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>CheckIn</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">CheckIns</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+
+
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+          
+            <div class="col-12">                
+                <!-- /.card -->
+                <div class="container" style="margin-top:30px">
+
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="container" style="margin-top:30px">
+                            @*<select class="form-control catId">
+                                <option value="-1">---Select Category---</option>
+
+                                @foreach (var cat in ViewBag.Vendor)
+                                 {
+                                    <option value="@cat.Id">@cat.Name</option>
+                                 }
+                            </select>*@
+                            <div class="card-body">
+                                <table id="CheckInTable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="remove">
+                                            <th style="width:20%;background-color:aliceblue">Staff Id</th>
+                                            <th style="width:20%;background-color:antiquewhite">Staff Name</th>
+                                            <th style="width:20%; background-color:cornflowerblue">Vendor</th>
+                                            <th style="width:20%; background-color:antiquewhite">Number of Checks</th>
+
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                <!-- /.col -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+@section scripts{
+
+
+    <script>
+
+        var dataTable
+        $(document).ready(function () {
+            
+            dataTable = $('#CheckInTable').DataTable({
+                "ajax": {
+                    "url": "http://localhost:60532/api/chopwella/CheckInDetails",
+                    "type": "GET",
+                    "dataType": "json",
+                    "dataSrc": ""
+                },
+
+                "columns":
+                    [
+                        { "data": "StaffId" },
+                        { "data": "StaffName" },  
+                        { "data":"VendorId"},
+                        { "data": "CheckCount" },
+
+                    ],
+                "bDestroy": true,
+                "language": {
+                    "emptyTable": "Table is empty"
+                }
+            });
+            var sum = 0;
+        })
+    </script>
+
+
+}

@@ -21,6 +21,6 @@ namespace Chopwella.Web.Controllers
             ViewBag.Categories = catservice.GetAll();
             ViewBag.Staff = staffservice.GetAll();
             return View();
-        }
+        }       
     }
 }

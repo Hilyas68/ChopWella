@@ -125,62 +125,110 @@
                             { "data": "Name" },
                             { "data": "StaffNum" },
                             {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Monday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             }, {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Tuesday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             }, {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Wednesday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             }, {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Thursday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             },
 
                             {
-                                "": "", "render": function () {
-                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                "data": "Friday", "render": function (data) {
+                                    if (data == false) {
+                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
+                                    } else {
+                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
+
+                                    }
                                 }
                             }
                         ],
+
+
+
+                        rowId: 'extn',
+                        select: true,
+                        dom: 'Bfrtip',
                         "keepConditions": "true",
 
                         "language": {
-                            "emptyTable": "No Record found"
+                            "checkinTb": "No Record found"
                         }
                     });
 
-                    $('#checkinTb').on('click', 'a', function (e) {
+                    var clickedValue;
+
+                    $('#checkinTb tbody').on('click', 'td', function (e) {
 
                         if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
-
-                            var data = datatable.row($(this).parents('tr')).data();
-                            //console.log(data);
+                          var data = datatable.row($(this).parents('tr')).data();                          
+                                                 
+                            clickedValue = this.cellIndex;
+                            alert("clicked cell :" + clickedValue);
                             $.ajax({
                                 type: 'POST',
                                 url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
-                                data: data,
-                                success: function (newchecks) {
+                                data: {
+
+                                    'Id': data.Id,
+                                    'CategoryId': data.CategoryId,
+                                    'Email': data.Email,
+                                    'Name': data.Name,
+                                    'StaffNum': data.StaffNum,
+                                    'Monday': (clickedValue == 2) ? true : false,
+                                    'Tuesday': (clickedValue == 3) ? true : false,
+                                    'Wednesday': (clickedValue == 4) ? true : false,
+                                    'Thursday': (clickedValue == 5) ? true : false,
+                                    'Friday': (clickedValue == 6) ? true : false,
+
+                                },
+                                success: function () {
 
                                 }
                             });
-                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
+                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");                           
+                            $('.btn-success').prop('disabled', true);
+
                         }
 
 
                     });
 
+
+
                 });
             });
-
-
-
-        });
+        })
 
 
     </script>
