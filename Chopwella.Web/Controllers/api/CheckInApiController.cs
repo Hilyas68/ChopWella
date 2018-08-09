@@ -28,14 +28,15 @@ namespace Chopwella.Web.Controllers.api
             try
             {
                 var check = _checkinservice.GetAll();
-                var display = check.GroupBy(p => new { p.Staff.StaffNum, p.Staff.Name,p.VendorId }, p => p,
-                    (key, g) => new{
-                    StaffId = key.StaffNum,
-                    StaffName = key.Name,
-                    VendorId=key.VendorId,
-                    CheckCount = g.Count()
-                });
-                
+                var display = check.GroupBy(p => new { p.Staff.StaffNum, p.Staff.Name, p.VendorId }, p => p,
+                    (key, g) => new
+                    {
+                        StaffId = key.StaffNum,
+                        StaffName = key.Name,
+                        VendorId = key.VendorId,
+                        CheckCount = g.Count()
+                    });
+
                 return this.Request.CreateResponse(HttpStatusCode.Created, display);
             }
             catch (Exception ex)
@@ -44,28 +45,28 @@ namespace Chopwella.Web.Controllers.api
             }
         }
 
-      
+
         [HttpPost]
         [Route("AddtoCheckin")]
         public HttpResponseMessage AddCheckin(CheckinViewModel cvm)
         {
             try
             {
-                   var checkin = new CheckIn
+                var checkin = new CheckIn
                 {
-                 
+
                     StaffId = cvm.Id,
                     IsChecked = true,
                     VendorId = 1
                 };
 
-                var Day = cvm.Day;               
+                var Day = cvm.Day;
                 var staff = staffservices.GetSingle(cvm.Id);
 
                 switch (Day)
                 {
-                    
-                    case 2:                       
+
+                    case 2:
                         if (staff != null)
                         {
 
@@ -85,7 +86,7 @@ namespace Chopwella.Web.Controllers.api
                                 staff.Tuesday = true;
                             }
                         }
-                    
+
                         break;
                     case 4:
                         if (staff != null)
@@ -96,7 +97,7 @@ namespace Chopwella.Web.Controllers.api
                                 staff.Wednesday = true;
                             }
                         }
-                        
+
                         break;
                     case 5:
                         if (staff != null)
@@ -107,7 +108,7 @@ namespace Chopwella.Web.Controllers.api
                                 staff.Thursday = true;
                             }
                         }
-                       
+
                         break;
                     case 6:
                         if (staff != null)
@@ -118,18 +119,14 @@ namespace Chopwella.Web.Controllers.api
                                 staff.Friday = true;
                             }
                         }
-                        
+
                         break;
                     default:
-                       
+
                         break;
                 }
 
                 UpdateStaff(staff);
-
-
-
-
 
                 _checkinservice.Add(checkin);
                 return Request.CreateResponse(HttpStatusCode.OK, "checked");
@@ -144,9 +141,9 @@ namespace Chopwella.Web.Controllers.api
 
         public void UpdateStaff(Staff staff)
         {
-            
+
             staffservices.Edit(staff);
         }
-       
+
     }
 }

@@ -33,6 +33,7 @@ namespace Chopwella.Web.Controllers.api
                 return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
         [Route("addCategory")]
         [HttpPost]
         public HttpResponseMessage AddCategory([FromBody]Category c)

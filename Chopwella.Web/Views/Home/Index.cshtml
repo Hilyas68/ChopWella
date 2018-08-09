@@ -27,12 +27,12 @@
         <div class="col-md-4">
             @if (role)
             {
-                <a class="btn btn-success" style="color:#fff"> <i class="fa fa-plus"></i> Reset</a>
+                <a class="btn btn-danger" style="color:#fff"> Reset</a>
             }
         </div>
 
         <div class="col-md-4">
-            <a data-target="#extraModal" data-toggle="modal" class="btn btn-success" style="float:right; color:#fff" onclick=""> <i class="fa fa-plus"></i> Visitors / Extras</a>
+            <a data-target="#extraModal" data-toggle="modal" class="btn btn-default" style="float:right;" onclick="">Visitors</a>
         </div>
     </div>
     <div class="" style="margin-top:30px;">
@@ -60,7 +60,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Visitors / Extras</h4>
+                    <h4 class="modal-title">Visitors</h4>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -100,132 +100,5 @@
 @section script{
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-    <script>
-
-        $(document).ready(function () {
-            var datatable = $('#checkinTb').DataTable();
-
-
-            var table = $('#checkinTb');
-
-            $(".catId").change(function (event) {
-                var catId = $(this).val();
-                $(function () {
-                    datatable.destroy();
-                    datatable = table.DataTable({
-                        "ajax": {
-                            "url": "http://localhost:60532/api/chopwella/staffbyCat/" + catId,
-                            "type": "GET",
-                            "dataType": "json",
-                            "dataSrc": "",
-                            "destroy": "true",
-                            "stateSave": "true"
-                        },
-                        "columns": [
-                            { "data": "Name" },
-                            { "data": "StaffNum" },
-                            {
-                                "data": "Monday", "render": function (data) {
-                                    if (data == false) {
-                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
-                                    } else {
-                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
-
-                                    }
-                                }
-                            }, {
-                                "data": "Tuesday", "render": function (data) {
-                                    if (data == false) {
-                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
-                                    } else {
-                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
-
-                                    }
-                                }
-                            }, {
-                                "data": "Wednesday", "render": function (data) {
-                                    if (data == false) {
-                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
-                                    } else {
-                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
-
-                                    }
-                                }
-                            }, {
-                                "data": "Thursday", "render": function (data) {
-                                    if (data == false) {
-                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
-                                    } else {
-                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
-
-                                    }
-                                }
-                            },
-
-                            {
-                                "data": "Friday", "render": function (data) {
-                                    if (data == false) {
-                                        return "<a class='btn btn-sm btn-default' > UnSigned <a/>";
-                                    } else {
-                                        return "<input  class='btn btn-sm btn-success ' type = 'button' value = 'Signed'/>";
-
-                                    }
-                                }
-                            }
-                        ],
-
-
-
-                        rowId: 'extn',
-                        select: true,
-                        dom: 'Bfrtip',
-                        "keepConditions": "true",
-
-                        "language": {
-                            "checkinTb": "No Record found"
-                        }
-                    });
-
-                    var clickedValue;
-
-                    $('#checkinTb').on('click', 'a', function (e) {
-
-                        if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
-                         var data = datatable.row($(this).parents('tr')).data();                      
-                                                 
-                            clickedValue = $(this).parent().index();                           
-                            console.log(clickedValue);
-                            $.ajax({
-                                type: 'POST',
-                                url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
-                                data: {
-
-                                    'Id': data.Id,
-                                    'CategoryId': data.CategoryId,
-                                    'Email': data.Email,
-                                    'Name': data.Name,
-                                    'StaffNum': data.StaffNum,    
-                                    'Day': clickedValue
-                                },
-                                context: this,
-                                success: function () {
-                                    $(this).removeClass("btn-default").addClass("btn-success").text("Signed");   
-                                }
-                            });
-                                                   
-                            $('.btn-success').prop('disabled', true);
-
-                        }
-
-
-                    });
-
-
-
-                });
-            });
-        })
-
-
-    </script>
+    <script src="~/Scripts/index.js"></script>
 }
