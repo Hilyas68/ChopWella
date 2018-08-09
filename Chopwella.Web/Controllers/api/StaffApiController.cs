@@ -122,5 +122,31 @@ namespace Chopwella.Web.Controllers.api
                 return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [Route("reset")]
+        [HttpPut]
+        public HttpResponseMessage ResetStaffRecord()
+        {
+            try
+            {
+                var _staff = staffservice.GetAll();
+                foreach (var staff in _staff)
+                {
+                    staff.Monday = false;
+                    staff.Tuesday = false;
+                    staff.Wednesday = false;
+                    staff.Thursday = false;
+                    staff.Friday = false;
+                }
+                staffservice.Save();
+
+                return this.Request.CreateResponse(HttpStatusCode.Created, "Successful");
+            }
+            catch (Exception ex)
+            {
+
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

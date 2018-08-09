@@ -1,5 +1,6 @@
-﻿$(document).ready(function () {
-    var datatable = $('#checkinTb').DataTable();
+﻿var datatable;
+$(document).ready(function () {
+    datatable = $('#checkinTb').DataTable();
 
 
     var table = $('#checkinTb');
@@ -120,4 +121,26 @@
 
         });
     });
+
 });
+
+function Reset() {
+    if (confirm("Are you sure you want to reset staff records?")) {
+        $.ajax({
+            url: "http://localhost:60532/api/chopwella/reset",
+            method: "PUT",
+            success: function () {
+
+                alert('Reset Successfully');
+
+                datatable.ajax.reload();
+            },
+            error: function (jqXHR) {
+                alert(`${jqXHR.responseText}`);
+            }
+        });
+
+    }
+};
+
+

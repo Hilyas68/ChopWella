@@ -27,12 +27,12 @@
         <div class="col-md-4">
             @if (role)
             {
-                <a class="btn btn-danger" style="color:#fff"> Reset</a>
+                <input type="button" value="Reset" class="btn btn-danger" style="color:#fff" onclick="Reset()">
             }
         </div>
 
         <div class="col-md-4">
-            <a data-target="#extraModal" data-toggle="modal" class="btn btn-default" style="float:right;" onclick="">Visitors</a>
+            <a data-target="#extraModal" data-toggle="modal" class="btn btn-default" style="float:right;">Visitor</a>
         </div>
     </div>
     <div class="" style="margin-top:30px;">
@@ -101,4 +101,5 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script src="~/Scripts/index.js"></script>
+
 }
