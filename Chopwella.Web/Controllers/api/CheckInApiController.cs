@@ -53,31 +53,83 @@ namespace Chopwella.Web.Controllers.api
             {
                    var checkin = new CheckIn
                 {
-                   // Name = cvm.Name,
+                 
                     StaffId = cvm.Id,
                     IsChecked = true,
                     VendorId = 1
                 };
 
-                var staff = new Staff
+                var Day = cvm.Day;               
+                var staff = staffservices.GetSingle(cvm.Id);
+
+                switch (Day)
                 {
-                    Monday = cvm.Monday,
-                    Tuesday = cvm.Tuesday,
-                    Wednesday = cvm.Wednesday,
-                    Thursday = cvm.Thursday,
-                    Friday = cvm.Friday,
-                    CategoryId = cvm.CategoryId,
-                    Name = cvm.Name,
-                    StaffNum = cvm.StaffNum,
-                    Id = cvm.Id,
-                    Email = cvm.Email
-                };
+                    
+                    case 2:                       
+                        if (staff != null)
+                        {
+
+                            if (staff.Monday != true)
+                            {
+                                staff.Monday = true;
+                            }
+                        }
+
+                        break;
+                    case 3:
+                        if (staff != null)
+                        {
+
+                            if (staff.Tuesday != true)
+                            {
+                                staff.Tuesday = true;
+                            }
+                        }
+                    
+                        break;
+                    case 4:
+                        if (staff != null)
+                        {
+
+                            if (staff.Wednesday != true)
+                            {
+                                staff.Wednesday = true;
+                            }
+                        }
+                        
+                        break;
+                    case 5:
+                        if (staff != null)
+                        {
+
+                            if (staff.Thursday != true)
+                            {
+                                staff.Thursday = true;
+                            }
+                        }
+                       
+                        break;
+                    case 6:
+                        if (staff != null)
+                        {
+
+                            if (staff.Friday != true)
+                            {
+                                staff.Friday = true;
+                            }
+                        }
+                        
+                        break;
+                    default:
+                       
+                        break;
+                }
 
                 UpdateStaff(staff);
 
 
 
-               
+
 
                 _checkinservice.Add(checkin);
                 return Request.CreateResponse(HttpStatusCode.OK, "checked");
@@ -92,6 +144,7 @@ namespace Chopwella.Web.Controllers.api
 
         public void UpdateStaff(Staff staff)
         {
+            
             staffservices.Edit(staff);
         }
        

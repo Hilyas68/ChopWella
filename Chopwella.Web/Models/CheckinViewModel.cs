@@ -9,10 +9,11 @@
         public string Email { get; set; }
         public int CategoryId { get; set; }
         public bool ischecked { get; set; }
-        public bool Monday { get; set; }
+        public int Day { get; set; }
+       /* public bool Monday { get; set; }
         public bool Tuesday { get; set; }
         public bool Wednesday { get; set; }
         public bool Thursday { get; set; }
-        public bool Friday { get; set; }
+        public bool Friday { get; set; }*/
     }
 }
