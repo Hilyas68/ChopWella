@@ -131,13 +131,13 @@
 
                     var clickedValue;
 
-                    $('#checkinTb tbody').on('click', 'td', function (e) {
+                    $('#checkinTb').on('click', 'a', function (e) {
 
                         if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
-                          var data = datatable.row($(this).parents('tr')).data();                          
+                         var data = datatable.row($(this).parents('tr')).data();                      
                                                  
-                            clickedValue = this.cellIndex;
-                            alert("clicked cell :" + clickedValue);
+                            clickedValue = $(this).parent().index();                           
+                            console.log(clickedValue);
                             $.ajax({
                                 type: 'POST',
                                 url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
@@ -147,19 +147,15 @@
                                     'CategoryId': data.CategoryId,
                                     'Email': data.Email,
                                     'Name': data.Name,
-                                    'StaffNum': data.StaffNum,
-                                    'Monday': (clickedValue == 2) ? true : false,
-                                    'Tuesday': (clickedValue == 3) ? true : false,
-                                    'Wednesday': (clickedValue == 4) ? true : false,
-                                    'Thursday': (clickedValue == 5) ? true : false,
-                                    'Friday': (clickedValue == 6) ? true : false,
-
+                                    'StaffNum': data.StaffNum,    
+                                    'Day': clickedValue
                                 },
+                                context: this,
                                 success: function () {
-
+                                    $(this).removeClass("btn-default").addClass("btn-success").text("Signed");   
                                 }
                             });
-                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");                           
+                                                   
                             $('.btn-success').prop('disabled', true);
 
                         }
