@@ -83,40 +83,39 @@ $(document).ready(function () {
                 }
             });
 
-            var clickedValue;
+            //var clickedValue;
 
-            $('#checkinTb').on('click', 'a', function (e) {
+            //$('#checkinTb').on('click', 'a', function (e) {
 
-                if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
-                    var data = datatable.row($(this).parents('tr')).data();
+            //    if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
+            //        var data = datatable.row($(this).parents('tr')).data();
 
-                    clickedValue = $(this).parent().index();
-                    console.log(clickedValue);
-                    $.ajax({
-                        type: 'POST',
-                        url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
-                        data: {
+            //        clickedValue = $(this).parent().index();
+            //        console.log(clickedValue);
+            //        $.ajax({
+            //            type: 'POST',
+            //            url: 'http://localhost:60532/api/chopwella/AddtoCheckin',
+            //            data: {
 
-                            'Id': data.Id,
-                            'CategoryId': data.CategoryId,
-                            'Email': data.Email,
-                            'Name': data.Name,
-                            'StaffNum': data.StaffNum,
-                            'Day': clickedValue
-                        },
-                        context: this,
-                        success: function () {
-                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
-                        }
-                    });
+            //                'Id': data.Id,
+            //                'CategoryId': data.CategoryId,
+            //                'Email': data.Email,
+            //                'Name': data.Name,
+            //                'StaffNum': data.StaffNum,
+            //                'Day': clickedValue
+            //            },
+            //            context: this,
+            //            success: function () {
+            //                $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
+            //            }
+            //        });
 
-                    $('.btn-success').prop('disabled', true);
+            //        $('.btn-success').prop('disabled', true);
 
-                }
+            //    }
 
 
-            });
-
+            //});
 
 
         });

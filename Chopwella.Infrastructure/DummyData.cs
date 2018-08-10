@@ -33,11 +33,11 @@ namespace Chopwella.Infrastructure
         public static Visitor visitor1 = new Visitor { Name = "Lasisi Elenu", Staff = staff1 };
         public static Visitor visitor2 = new Visitor { Name = "Mark Angel", Staff = staff3 };
 
-        public static CheckIn check1 = new CheckIn { Staff = staff1, IsChecked = true, Vendor = vendor1 };
-        public static CheckIn check2 = new CheckIn { Staff = staff2, IsChecked = true, Vendor = vendor1 };
-        public static CheckIn check3 = new CheckIn { Staff = staff3, IsChecked = true, Vendor = vendor2 };
-        public static CheckIn check4 = new CheckIn { Staff = staff5, IsChecked = true, Vendor = vendor2 };
-        public static CheckIn check5 = new CheckIn { Staff = staff8, IsChecked = true, Vendor = vendor2 };
+        //public static CheckIn check1 = new CheckIn { Staff = staff1, IsChecked = true, };
+        //public static CheckIn check2 = new CheckIn { Staff = staff2, IsChecked = true, };
+        //public static CheckIn check3 = new CheckIn { Staff = staff3, IsChecked = true, };
+        //public static CheckIn check4 = new CheckIn { Staff = staff5, IsChecked = true, };
+        //public static CheckIn check5 = new CheckIn { Staff = staff8, IsChecked = true, };
 
 
         public static IEnumerable<Category> GetCategories() => new List<Category> { category1, category2, category3, category4, category5 };
@@ -46,7 +46,7 @@ namespace Chopwella.Infrastructure
 
         public static IEnumerable<Staff> GetStaff() => new List<Staff> { staff1, staff2, staff3, staff4, staff5, staff6, staff7, staff8, staff9, staff10 };
         public static IEnumerable<Visitor> GetVisitors() => new List<Visitor> { visitor1, visitor2 };
-        public static IEnumerable<CheckIn> GetCheckIns() => new List<CheckIn> { check1, check2, check3, check4, check5 };
+        // public static IEnumerable<CheckIn> GetCheckIns() => new List<CheckIn> { check1, check2, check3, check4, check5 };
 
         public static void CreateFirstAdmin()
         {

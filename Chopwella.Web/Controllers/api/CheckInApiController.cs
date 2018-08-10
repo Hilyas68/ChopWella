@@ -1,6 +1,7 @@
 ﻿using Chopwella.Core;
 using Chopwella.ServiceInterface;
 using Chopwella.Web.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Linq;
 using System.Net;
@@ -52,64 +53,69 @@ namespace Chopwella.Web.Controllers.api
         {
             try
             {
-                var checkin = new CheckIn
+                var user = User.IsInRole("VENDOR");
+
+                if (user)
                 {
-
-                    StaffId = cvm.Id,
-                    IsChecked = true,
-                    VendorId = 1
-                };
-
-                var Day = cvm.Day;
-                var staff = staffservices.GetSingle(cvm.Id);
-
-                if (staff != null)
-                {
-
-                    switch (Day)
+                    var checkin = new CheckIn
                     {
 
-                        case 2:
-                            if (staff.Monday != true)
-                            {
-                                staff.Monday = true;
-                            }
+                        StaffId = cvm.Id,
+                        IsChecked = true,
+                        VendorId = int.Parse(User.Identity.GetUserId())
+                    };
 
-                            break;
-                        case 3:
-                            if (staff.Tuesday != true)
-                            {
-                                staff.Tuesday = true;
-                            }
-                            break;
-                        case 4:
-                            if (staff.Wednesday != true)
-                            {
-                                staff.Wednesday = true;
-                            }
-                            break;
-                        case 5:
-                            if (staff.Thursday != true)
-                            {
-                                staff.Thursday = true;
-                            }
-                            break;
-                        case 6:
-                            if (staff.Friday != true)
-                            {
-                                staff.Friday = true;
-                            }
-                            break;
-                        default:
+                    var Day = cvm.Day;
+                    var staff = staffservices.GetSingle(cvm.Id);
 
-                            break;
+                    if (staff != null)
+                    {
+
+                        switch (Day)
+                        {
+
+                            case 2:
+                                if (staff.Monday != true)
+                                {
+                                    staff.Monday = true;
+                                }
+
+                                break;
+                            case 3:
+                                if (staff.Tuesday != true)
+                                {
+                                    staff.Tuesday = true;
+                                }
+                                break;
+                            case 4:
+                                if (staff.Wednesday != true)
+                                {
+                                    staff.Wednesday = true;
+                                }
+                                break;
+                            case 5:
+                                if (staff.Thursday != true)
+                                {
+                                    staff.Thursday = true;
+                                }
+                                break;
+                            case 6:
+                                if (staff.Friday != true)
+                                {
+                                    staff.Friday = true;
+                                }
+                                break;
+                            default:
+
+                                break;
+                        }
+
+                        UpdateStaff(staff);
                     }
 
-                    UpdateStaff(staff);
+                    _checkinservice.Add(checkin);
                 }
 
-
-                _checkinservice.Add(checkin);
                 return Request.CreateResponse(HttpStatusCode.OK, "checked");
 
             }

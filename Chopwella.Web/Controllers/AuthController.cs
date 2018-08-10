@@ -56,7 +56,7 @@ namespace Chopwella.Web.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Vendor");
+                        return RedirectToAction("Index", "Home");
                     }
 
                 }

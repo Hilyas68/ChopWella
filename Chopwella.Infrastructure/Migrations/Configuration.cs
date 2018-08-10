@@ -21,13 +21,13 @@ namespace Chopwella.Infrastructure.Migrations
             var vendors = DummyData.GetVendors();
             var staff = DummyData.GetStaff();
             var visitors = DummyData.GetVisitors();
-            var checkIns = DummyData.GetCheckIns();
+            //var checkIns = DummyData.GetCheckIns();
 
             context.Set<Category>().AddRange(cats);
             context.Set<Vendor>().AddRange(vendors);
             context.Set<Staff>().AddRange(staff);
             context.Set<Visitor>().AddRange(visitors);
-            context.Set<CheckIn>().AddRange(checkIns);
+            //context.Set<CheckIn>().AddRange(checkIns);
 
             DummyData.CreateFirstAdmin();
         }

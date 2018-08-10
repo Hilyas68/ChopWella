@@ -8,7 +8,6 @@ namespace Chopwella.Core
         public int StaffId { get; set; }
         public bool IsChecked { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
-        public virtual Vendor Vendor { get; set; }
         public int VendorId { get; set; }
     }
 }
